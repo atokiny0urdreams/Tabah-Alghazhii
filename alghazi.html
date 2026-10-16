@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al | Madridista, Pembaca, Calon Pengusaha</title>
+  <style>
+    :root {
+      --navy: #0a1630;
+      --gold: #febe10;
+      --gold-soft: #ffe08a;
+      --white: #f8f9ff;
+      --muted: #aab4d4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: var(--white);
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at 15% 0%, #1c3a7a 0, transparent 45%),
+        radial-gradient(circle at 90% 35%, #3d2c06 0, transparent 40%),
+        var(--navy);
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 18px; }
+    section { padding: 56px 0 8px; }
+    h2 { font-size: 1.8rem; color: var(--gold); margin-bottom: 14px; }
+    h3 { color: var(--gold-soft); margin-bottom: 6px; }
+    p { margin-bottom: 12px; }
+    a { color: var(--gold); font-weight: bold; text-decoration: none; }
+    a:hover { color: var(--gold-soft); text-decoration: underline; }
+
+    #bar { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: var(--gold); z-index: 50; }
+
+    nav { position: sticky; top: 0; z-index: 40; background: #0a1630dd; backdrop-filter: blur(8px); border-bottom: 1px solid #ffffff1a; }
+    nav .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; padding: 12px 8px; list-style: none; }
+    nav .links a { font-size: .95rem; }
+
+    .hero { text-align: center; padding: 60px 0 20px; }
+    .avatar {
+      width: 190px; height: 190px; margin: 0 auto 18px; padding: 5px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #ffffff, var(--gold));
+      box-shadow: 0 0 40px #febe1066;
+    }
+    .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center bottom; display: block; }
+    h1 { font-size: 2.4rem; text-shadow: 0 0 18px #febe1077; }
+    h5 { font-weight: normal; color: var(--gold); letter-spacing: 1px; margin: 6px 0 14px; }
+    .typing { font-size: 1.25rem; min-height: 2rem; }
+    .cursor { color: var(--gold); animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .btn {
+      display: inline-block; margin: 8px 6px 0; padding: 11px 26px; border: 0; border-radius: 999px; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), #ff9d00); color: #1a1200; font-weight: bold; font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: scale(1.06); box-shadow: 0 8px 22px #febe1066; text-decoration: none; color: #1a1200; }
+
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    .card {
+      background: #ffffff0f; border: 1px solid #ffffff22; border-radius: 18px; padding: 22px 24px; margin-bottom: 18px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 12px 30px #febe1033; }
+    .stat { text-align: center; }
+    .stat b { display: block; font-size: 1.6rem; color: var(--gold); }
+    .stat span { color: var(--muted); font-size: .9rem; }
+
+    ul.facts { list-style: none; }
+    ul.facts li { padding: 6px 0; border-bottom: 1px dashed #ffffff22; }
+    ul.facts li b { color: var(--gold-soft); }
+
+    .tl { border-left: 3px solid var(--gold); padding-left: 20px; margin: 14px 0 20px 6px; }
+    .tl .item { margin-bottom: 18px; position: relative; }
+    .tl .item::before { content: ""; position: absolute; left: -29px; top: 8px; width: 13px; height: 13px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .tl .year { color: var(--gold); font-weight: bold; }
+
+    blockquote { border-left: 4px solid var(--gold); padding: 8px 16px; margin: 14px 0; color: var(--gold-soft); background: #ffffff0a; border-radius: 0 12px 12px 0; font-style: italic; }
+    #count { color: var(--gold); font-weight: bold; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ffffff2a; vertical-align: top; }
+    th { color: var(--gold); }
+
+    details { background: #ffffff0f; border: 1px solid #ffffff22; border-radius: 14px; padding: 12px 18px; margin-bottom: 12px; }
+    summary { cursor: pointer; font-weight: bold; color: var(--gold-soft); }
+    details[open] { border-color: var(--gold); }
+    ol.road { padding-left: 22px; }
+    ol.road li { margin-bottom: 8px; }
+
+    footer { text-align: center; color: var(--muted); padding: 50px 0 40px; font-size: .9rem; }
+
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s, transform .7s; }
+    .reveal.show { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+
+<body bgcolor="#0a1630">
+  <div id="bar"></div>
+
+  <nav>
+    <ul class="links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#madrid">Madrid</a></li>
+      <li><a href="#buku">Buku</a></li>
+      <li><a href="#film">Film &amp; Series</a></li>
+      <li><a href="#cita">Cita-cita</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="avatar">
+        <img src="foto.jpeg" alt="Foto Muhammad Tabah Alghazhii">
+      </div>
+      <h1>Yo dawg, gue Al! 👋</h1>
+      <h5>MUHAMMAD TABAH ALGHAZHII • TEKNIK LOGISTIK • UPI 2024</h5>
+      <p class="typing">Gue <span id="type"></span><span class="cursor">|</span></p>
+      <a class="btn" href="#tentang">Kenalan dulu yuk</a>
+      <a class="btn" href="#madrid">Langsung ke Madrid ⚽</a>
+    </header>
+
+    <!-- STATS -->
+    <div class="grid reveal" style="margin-top:30px">
+      <div class="card stat"><b>2024</b><span>Angkatan di UPI</span></div>
+      <div class="card stat"><b>Bekasi</b><span>Kota asal</span></div>
+      <div class="card stat"><b>All Role</b><span>Posisi di lapangan</span></div>
+      <div class="card stat"><b>Sejak Lahir</b><span>Madridista</span></div>
+    </div>
+
+    <!-- TENTANG -->
+    <section id="tentang" class="reveal">
+      <h2>🙋 Kenalan Dulu lahh</h2>
+      <div class="card">
+        <p>
+          Halo! Nama lengkap gue Muhammad Tabah Alghazhii, panggil aja Al.
+          Anak Bekasi yang sekarang kuliah Teknik Logistik di Universitas
+          Pendidikan Indonesia, angkatan 2024. Di kampus gue belajar gimana
+          caranya barang bisa sampai tujuan no ribet: pergudangan, material
+          handling, sampai distribusi.
+        </p>
+        <p>
+          Di luar kampus, hidup gue muter di tiga dunia: lapangan bola,
+          rak buku, dan layar tontonan. Scroll terus ya, ada banyak cerita. 👇
+        </p>
+      </div>
+
+      <h3>Fakta singkat tentang gue</h3>
+      <div class="card">
+        <ul class="facts">
+          <li><b>Nama panggilan:</b> Al</li>
+          <li><b>Asal:</b> Bekasi</li>
+          <li><b>Kampus:</b> Universitas Pendidikan Indonesia (angkatan 2024)</li>
+          <li><b>Posisi main bola:</b> All role, di mana aja siap</li>
+          <li><b>Klub favorit:</b> Real Madrid</li>
+          <li><b>Idola:</b> Sergio Ramos</li>
+        </ul>
+      </div>
+
+      <h3 style="margin-top:20px">Tiga dunia gue</h3>
+      <div class="grid">
+        <div class="card"><h3>⚽ Bola</h3><p>Main di lapangan, nonton Madrid, dan jadi fans Ramos garis keras.</p><a href="#madrid">Masuk ke dunia bola →</a></div>
+        <div class="card"><h3>📚 Baca</h3><p>Buku apa aja gue embat. Novel, sastra, sampai yang berat-berat.</p><a href="#buku">Intip rak buku →</a></div>
+        <div class="card"><h3>🎬 Tonton</h3><p>Film sci-fi dan series crime yang bikin lupa waktu.</p><a href="#film">Lihat tontonan →</a></div>
+      </div>
+    </section>
+
+    <!-- MADRID -->
+    <section id="madrid" class="reveal">
+      <h2>⚽ Hala Madrid! Madridista Sejak Lahir</h2>
+      <div class="card">
+        <p>
+          Gue jadi Madridista itu bukan ikut-ikutan, tapi dari lahir. Jadi
+          nggak ada ceritanya "pindah klub". Putih itu udah di darah. 🤍
+        </p>
+        <p>
+          Soal main bola, gue pemain <b>all role</b>: bek, gelandang, sampai
+          striker, kalau kepepet kiper pun jadi. Yang penting main dan
+          semangatnya sampai peluit akhir, kayak Madrid.
+        </p>
+      </div>
+
+      <h3>Idola gue: Sergio Ramos</h3>
+      <div class="card">
+        <p>
+          Kapten, bek tengah, dan manusia yang suka muncul tepat di menit-menit
+          paling genting. Ramos itu bukti kalau mental pemenang lebih penting
+          dari apa pun. Buat gue, dia simbol "jangan nyerah sebelum wasit niup
+          peluit panjang".
+        </p>
+      </div>
+
+      <h3>Dua momen yang nggak bakal gue lupa</h3>
+      <div class="tl">
+        <div class="item">
+          <span class="year">2014 — Final Liga Champions, Lisbon</span>
+          <p>
+            Madrid ketinggalan dari Atletico sampai detik-detik terakhir.
+            Lalu Sergio Ramos nyundul bola di menit 90+3 buat nyamain skor.
+            Masuk extra time, Madrid ngamuk dan menang 4-1. Remontada paling
+            gila, sekaligus gelar <b>La Décima</b>, juara Eropa ke-10 buat Madrid.
+          </p>
+        </div>
+        <div class="item">
+          <span class="year">2022 — Semifinal Liga Champions vs Manchester City</span>
+          <p>
+            Di leg kedua di Bernabéu, Madrid udah di ambang tersingkir sampai
+            menit ke-90. Terus Rodrygo nyetak dua gol di injury time, dan
+            Benzema nutup lewat penalti di extra time. Madrid lolos dengan
+            agregat 6-5. Pelajarannya: di Bernabéu nggak ada yang namanya
+            "udah selesai".
+          </p>
+        </div>
+      </div>
+
+      <blockquote>Dua momen itu ngajarin gue satu hal: selama masih ada waktu, masih ada harapan.</blockquote>
+
+      <p>
+        <button class="btn" id="hala" type="button">Hala Madrid! 🤍</button>
+        &nbsp; Udah di-<i>hala</i>-in <span id="count">0</span> kali
+      </p>
+    </section>
+
+    <!-- BUKU -->
+    <section id="buku" class="reveal">
+      <h2>📚 Rak Buku Gue</h2>
+      <div class="card">
+        <p>
+          Gue suka baca buku apa aja, nggak pilih-pilih. Fiksi, sastra,
+          sampai non-fiksi, semuanya masuk. Tapi dua nama yang paling sering
+          nongol di rak gue: <b>Tere Liye</b> dan <b>Buya Hamka</b>.
+        </p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>📖 Novel Tere Liye</h3>
+          <p>Ceritanya enak diikuti, tapi tetap nyisain banyak bahan renungan tentang hidup dan manusia.</p>
+          <!-- Mau lebih personal? Tulis judul novel Tere Liye favoritmu di sini -->
+        </div>
+        <div class="card">
+          <h3>🕌 Karya Buya Hamka</h3>
+          <p>Sastra dan hikmah dalam satu paket. Bahasanya indah dan nilai hidupnya dalam.</p>
+          <!-- Tulis judul buku Buya Hamka favoritmu di sini -->
+        </div>
+      </div>
+      <blockquote>Buku itu tiket gratis buat keliling dunia tanpa perlu packing.</blockquote>
+    </section>
+
+    <!-- FILM -->
+    <section id="film" class="reveal">
+      <h2>🎬 Film &amp; Series</h2>
+      <div class="card">
+        <p>
+          Selera tontonan gue jelas: <b>film sci-fi</b> yang bikin mikir
+          "gimana kalau...", dan <b>series crime</b> yang bikin lupa waktu
+          sampai subuh.
+        </p>
+      </div>
+
+      <h3>Series andalan</h3>
+      <div class="card">
+        <table>
+          <tr>
+            <th>Judul</th>
+            <th>Genre</th>
+            <th>Kenapa gue suka</th>
+          </tr>
+          <tr>
+            <td>Game of Thrones</td>
+            <td>Fantasi, politik</td>
+            <td>Intrik perebutan takhta, dan nggak ada karakter yang aman.</td>
+          </tr>
+          <tr>
+            <td>Prison Break</td>
+            <td>Crime, thriller</td>
+            <td>Rencana kabur yang detailnya gila, tiap rencana ada perhitungannya.</td>
+          </tr>
+        </table>
+      </div>
+
+      <details>
+        <summary>🚀 Kenapa sci-fi?</summary>
+        <p style="margin-top:10px">
+          Karena sci-fi ngajak gue mikirin masa depan: teknologi, luar
+          angkasa, sampai pertanyaan "manusia bakal jadi apa". Dan buat anak
+          logistik, bayangin dunia yang semuanya otomatis itu seru banget.
+        </p>
+      </details>
+      <details>
+        <summary>🕵️ Kenapa series crime?</summary>
+        <p style="margin-top:10px">
+          Gue suka nyusun potongan teka-teki dan nebak alurnya sebelum
+          ceritanya kebuka. Kadang bener, kadang zonk, tapi selalu seru.
+        </p>
+      </details>
+    </section>
+
+    <!-- CITA-CITA -->
+    <section id="cita" class="reveal">
+      <h2>💼 Cita-cita Gue</h2>
+      <div class="card">
+        <h3>Pengusaha Kaya yang Baik Hati</h3>
+        <p>
+          Gue pengen jadi pengusaha sukses, bukan cuma buat diri sendiri,
+          tapi juga yang bisa bantu banyak orang. Kaya itu tujuan, baik hati
+          itu wajib.
+        </p>
+        <h3 style="margin-top:14px">Peta jalan gue</h3>
+        <ol class="road">
+          <li>Belajar logistik sampai paham luar dalam</li>
+          <li>Bangun usaha yang bikin barang sampai tujuan dengan lancar</li>
+          <li>Jadi sukses dan mandiri</li>
+          <li>Berbagi sebanyak-banyaknya</li>
+        </ol>
+      </div>
+
+      <h3>Matkul favorit di kampus</h3>
+      <div class="card">
+        <table>
+          <tr>
+            <th>Mata Kuliah</th>
+            <th>Kenapa gua Suka?</th>
+          </tr>
+          <tr>
+            <td>Praktikum Logistik Terintegrasi</td>
+            <td>Semua praktikum dari semester sebelumnya digabung jadi satu. Ibarat final boss-nya. 😎</td>
+          </tr>
+          <tr>
+            <td>Apresiasi Seni</td>
+            <td>Seru bingitttt! 🎨</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="reveal">
+      <h2>📬 Hubungi Gue</h2>
+      <div class="card">
+        <p>
+          Email: <a href="mailto:alghazhii@student.upi.edu">alghazhii@student.upi.edu</a><br>
+          GitHub: <a href="https://github.com/atokiny0urdreams" target="_blank">@atokiny0urdreams</a><br>
+          Kampus: <a href="https://www.upi.edu" target="_blank">Universitas Pendidikan Indonesia</a>
+        </p>
+        <a class="btn" href="#bar">Balik ke atas ↑</a>
+      </div>
+    </section>
+
+    <footer>
+      Dibuat pakai HTML, CSS, dan sedikit JavaScript ✨<br>
+      Hala Madrid! 🤍
+    </footer>
+
+  </div>
+
+  <script>
+    // Efek ngetik di hero
+    var words = [
+      "mahasiswa Teknik Logistik UPI",
+      "Madridista sejak lahir",
+      "pemain bola all role",
+      "pembaca buku segala jenis",
+      "calon pengusaha baik hati"
+    ];
+    var w = 0, c = 0, del = false;
+    function tick() {
+      var cur = words[w];
+      document.getElementById("type").textContent = cur.slice(0, c);
+      if (!del && c < cur.length) { c++; setTimeout(tick, 80); }
+      else if (!del) { del = true; setTimeout(tick, 1400); }
+      else if (c > 0) { c--; setTimeout(tick, 40); }
+      else { del = false; w = (w + 1) % words.length; setTimeout(tick, 300); }
+    }
+    tick();
+
+    // Progress bar scroll
+    window.addEventListener("scroll", function () {
+      var h = document.documentElement;
+      var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      document.getElementById("bar").style.width = (p * 100) + "%";
+    });
+
+    // Muncul pelan-pelan saat di-scroll
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("show"); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+    // Counter Hala Madrid
+    var n = 0;
+    document.getElementById("hala").addEventListener("click", function () {
+      n++;
+      document.getElementById("count").textContent = n;
+    });
+  </script>
+</body>
+</html>
